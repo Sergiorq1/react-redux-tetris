@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import GridBoard from './Components/GridBoard';
 import NextBlock from './Components/NextBlock';
+import ScoreBoard from './Components/ScoreBoard';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       </header>
       <GridBoard/>
       <NextBlock/>
+      <ScoreBoard/>
     </div>
   );
 }
