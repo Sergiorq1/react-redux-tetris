@@ -3,6 +3,8 @@ import './App.css';
 import GridBoard from './Components/GridBoard';
 import NextBlock from './Components/NextBlock';
 import ScoreBoard from './Components/ScoreBoard';
+import Controls from './Components/Controls';
+import MessagePopup from './Components/MessagePopUp';
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
       <GridBoard/>
       <NextBlock/>
       <ScoreBoard/>
+      <Controls/>
+      <MessagePopup/>
     </div>
   );
 }
