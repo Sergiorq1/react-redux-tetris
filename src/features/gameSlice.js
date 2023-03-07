@@ -5,10 +5,28 @@ export const gameSlice = createSlice({
     name: 'game',
     initialState: defaultState(),
     reducers: {
-        pause: () => {},
-        resume: () => {},
-        moveLeft: () => {},
-        moveRight: () => {},
+        pause: (state) => {
+            state.isRunning = false
+            return state
+        },
+        resume: (state) => {
+            state.isRunning = true
+            return state
+        },
+        moveLeft: (state) => {
+            const { shape, grid, x, y, rotation } = state
+            if (canMoveTo(shape, grid, x - 1, y, rotation)) {
+                state.x = x - 1
+            }
+            return state    
+        },
+        moveRight: (state) => {
+            const { shape, grid, x, y, rotation } = state
+            if (canMoveTo(shape, grid, x + 1, y, rotation)) {
+              state.x = x + 1
+            }
+            return state
+        },
         moveDown: () => {},
         rotate: (state) => {
             const { shape, grid, x, y, rotation } = state

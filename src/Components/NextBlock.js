@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { shapes } from '../utils'
 
 // Draws the "next" block view showing the next block to drop
-export default function NextBlock(props) {
+export default function NextBlock() {
   const nextShape = useSelector((state) => state.nextShape)
   const block = shapes[nextShape][0] // Get the first rotation
 
