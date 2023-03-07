@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { defaultState } from '../utils'
 
 export const gameSlice = createSlice({
     name: 'game',
-    initialState: {},
+    initialState: defaultState(),
     reducers: {
         pause: () => {},
         resume: () => {},
@@ -23,7 +24,8 @@ export const {
     rotate, 
     pause, 
     resume, 
-    gameOver, 
+    gameOver,
+    restart 
 } = gameSlice.actions
 
 export default gameSlice.reducer
