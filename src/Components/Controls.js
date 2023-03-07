@@ -4,7 +4,7 @@ import { moveDown, moveLeft, moveRight, rotate } from '../features/gameSlice'
 
 
 export default function Controls() {
-  const { isRunning, speed } = useSelector(state => state)
+  const { isRunning, speed, gameOver} = useSelector(state => state)
   const dispatch = useDispatch();
 
   // Set up the game timer
@@ -42,7 +42,7 @@ export default function Controls() {
 
     {/* left */}
     <button 
-    disabled={!isRunning}
+    disabled={!isRunning || gameOver}
     className="control-button"
     onClick={(e) => {
         dispatch(moveLeft())
@@ -51,7 +51,7 @@ export default function Controls() {
 
     {/* right */}
     <button 
-    disabled={!isRunning}
+    disabled={!isRunning || gameOver}
     className="control-button" 
     onClick={(e) => {
       dispatch(moveRight())
@@ -59,7 +59,7 @@ export default function Controls() {
 
     {/* rotate */}
     <button 
-    disabled={!isRunning}
+    disabled={!isRunning || gameOver}
     className="control-button" 
     onClick={(e) => {
       dispatch(rotate())
@@ -67,7 +67,7 @@ export default function Controls() {
 
     {/* down */}
     <button 
-    disabled={!isRunning}
+    disabled={!isRunning || gameOver}
     className="control-button" 
     onClick={(e) => {
       dispatch(moveDown())

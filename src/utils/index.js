@@ -1,6 +1,6 @@
 export const random = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min
-  }
+}
   
 
 // Returns the default grid
@@ -19,7 +19,7 @@ export const gridDefault = () => {
     }
   
     return array
-  }
+}
 
 // Define block shapes and their rotations as arrays.
 export const shapes = [
@@ -163,7 +163,7 @@ export const shapes = [
 // Random Shape
 export const randomShape = () => {
     return random(1, shapes.length - 1)
-  }
+}
 
 // Return the default state for the game
 export const defaultState = () => {
@@ -226,4 +226,28 @@ export const canMoveTo = (shape, grid, x, y, rotation) => {
       }
     }
     return true
+}
+
+// Adds a current shape to the grid
+export const addBlockToGrid = (shape, grid, x, y, rotation) => {
+    // At this point the game is not over
+    let gameOver = false
+    const block = shapes[shape][rotation]
+    const newGrid = [ ...grid ]
+    for (let row = 0; row < block.length; row++) {
+      for (let col = 0; col < block[row].length; col++) {
+        if (block[row][col]) {
+          const yIndex = row + y
+          // If the yIndex is less than 0 part of the block
+          // is off the top of the screen and the game is over
+          if (yIndex < 0) {
+            gameOver = true
+          } else {
+            newGrid[row + y][col + x] = shape
+          }
+        }
+      }
+    }
+    // Return both the newGrid and the gameOver bool 
+    return { newGrid, gameOver }
 }
